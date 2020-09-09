@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
-export default function CharacterCard(props) {
- const [active, setActive] = useState(false);
- const activate = () => {
-    if(!active){
-    setActive(true)
-    props.activationHandler(props.value)
+import React, {Component} from 'react';
+import './App.css';
+export default class CharacterCard extends Component {
+ 
+    constructor(props){
+        super(props)
+        this.state ={
+            activate : false,
+        }
     }
+    activate =() => {
+        if(this.state.activate){
+            this.props.activationHandler(this.props.value)
+            this.setState({activ: true})
+        }
     }
- const className = `card ${active ? 'activeCard': ''}`
+    render(){
+        let className = 'card ${this.state.active ? 'activeCard' : ''}'
  return (
- <div className={className} onClick={activate}>{props.value}</div>
+   <div className={className} onClick={activate}>{this.activate}
+   {this.props.value
+   }</div>
  )
 
 }
+  ComponentDidUpdata(prevProps){
+      if()
+  }
